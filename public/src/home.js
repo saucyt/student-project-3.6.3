@@ -37,11 +37,15 @@ function getMostCommonGenres(books) {
   return genreArray.slice(0, 5);
 }
 
+// helper function that sorts books into array based on the times it was borowed 
+function sortByBorrowCount(books){
+  return books.slice().sort((a, b) => b.borrows.length - a.borrows.length)
+}
+
 function getMostPopularBooks(books) {
   // Sorts books in array based on the times the book was borrowed
-  const sortedBooks = books
-    .slice()
-    .sort((a, b) => b.borrows.length - a.borrows.length);
+  // updated to include the use of a helper function comment above matches the line below
+  const sortedBooks = sortByBorrowCount(books)
 
   // creates an array with the count and name key for each book
   const result = sortedBooks
